@@ -42,6 +42,12 @@
         import { OrbitControls } from 'https://unpkg.com/three@0.157.0/examples/jsm/controls/OrbitControls.js';
         import { LumaSplatsThree } from '@lumaai/luma-web';
 
+function isChrome() {
+    return /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
+}
+
+        
+        
         // Parameters
         const parameters = {
             camera: {
@@ -68,6 +74,12 @@
             }
         };
 
+if (isChrome()) {
+    parameters.animation.speed *= 0.5;
+}
+
+        
+        
         let renderer = new WebGLRenderer({ antialias: false });
         renderer.setSize(window.innerWidth, window.innerHeight);
         renderer.setClearColor(new Color(0x000000)); // Renderer clear color set to black
